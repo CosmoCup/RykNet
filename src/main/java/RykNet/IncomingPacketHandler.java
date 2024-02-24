@@ -35,6 +35,7 @@ public class IncomingPacketHandler extends Thread {
                         String[] packetSectors = data.split(RykNet.PacketDataBreak());
                         if (packetSectors.length < 2) {
                             RykNet.Print("Error receiving packet from " + socket.getRemoteSocketAddress());
+                            RykNet.Print("Probably corrupt data, maybe the Encode() method is weird?");
                             continue;
                         }
                         String packetID = packetSectors[0];
@@ -42,7 +43,8 @@ public class IncomingPacketHandler extends Thread {
 
                         RykNetPacket packet = PacketManager.GetPacketFromID(packetID);
                         if (packet == null) {
-                            RykNet.Print("Received invalid packet from " + socket.getRemoteSocketAddress());
+                            RykNet.Print("Received invalid packet from " + socket.getRemoteSocketAddress() );
+                            RykNet.Print( "Have you registered the packet? -> RegisterPacket( new <YourPacketHere>() )" );
                             continue;
                         }
                         packet.Decode(packetData);

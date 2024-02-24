@@ -1,8 +1,5 @@
 package RykNet;
 
-import RykNet.Packet.PacketClientDisconnect;
-import RykNet.Packet.PacketPongServer;
-
 import java.io.DataOutputStream;
 import java.net.*;
 
@@ -15,6 +12,8 @@ public abstract class RykNetClient {
         SetShutdownHook();
         PacketManager.InitStdPackets(null, this);
     }
+
+    // -------- Public Methods --------
 
     public boolean TryConnectToServer(String ip, int port) {
         RykNet.Print("Trying connection to server " + ip + ":" + port);
@@ -37,10 +36,6 @@ public abstract class RykNetClient {
         serverSocket = null;
     }
 
-    public void ReceivePing(long timestamp) {
-        SendPacket(new PacketPongServer(timestamp));
-    }
-
     public void SendPacket(RykNetPacket packet) {
         if (serverSocket == null) return;
         String packetData = packet.PacketID() + RykNet.PacketDataBreak() + packet.Encode();
@@ -51,6 +46,13 @@ public abstract class RykNetClient {
         catch (SocketException e) { Disconnect(); }
         catch(Exception e) { e.printStackTrace(); }
     }
+
+    // ----------------------------------
+
+    void ReceivePing(long timestamp) {
+        SendPacket(new PacketPongServer(timestamp));
+    }
+
 
     void SetShutdownHook() {
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {

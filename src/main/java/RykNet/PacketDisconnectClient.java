@@ -1,4 +1,4 @@
-package RykNet.Packet;
+package RykNet;
 
 import RykNet.*;
 import java.net.Socket;

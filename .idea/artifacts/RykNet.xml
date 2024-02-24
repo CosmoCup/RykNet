@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="RykNet">
+    <output-path>$PROJECT_DIR$/out/artifacts/RykNet</output-path>
+    <root id="archive" name="RykNet.jar">
+      <element id="module-output" name="ryknet.main" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/resources/META_INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>

@@ -1,7 +1,5 @@
 package RykNet;
 
-import RykNet.Packet.*;
-
 import java.util.HashMap;
 
 public class PacketManager {

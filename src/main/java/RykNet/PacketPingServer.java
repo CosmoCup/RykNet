@@ -1,4 +1,4 @@
-package RykNet.Packet;
+package RykNet;
 
 import RykNet.RykNetPacket;
 import RykNet.RykNetServer;
