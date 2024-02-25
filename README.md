@@ -156,7 +156,7 @@ This would be done outside of the packet class, before any connections between a
 We pass null as the `message` parameter during registration as it will be populated either when creating the packet when we send it, or during decoding when it is received. 
 
 ### Side Note
-You do not need to create the `PacketSendMessage` packet in your project, this was only given as an example. A packet to send messages already exists as `PacketMessage(String message)` and functions the exact same.
+You do not need to create the `PacketSendMessage` class in your project, this was only given as an example. A packet to send messages already exists as `PacketMessage(String message)` and functions the exact same.
 
 ## Sending Packets
 ### Sending from the Client to the Server
