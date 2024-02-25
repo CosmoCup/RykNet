@@ -197,7 +197,7 @@ public class Client extends RykNetClient {
         boolean connectionSuccessful = TryConnectToServer(ip, port);
 
         if (connectionSuccessful) {
-            SendPacket( new PacketSendMessage("You like jazz.?"));
+            SendPacket( new PacketMessage("You like jazz.?"));
         }
     }
 
@@ -220,7 +220,7 @@ public class Server extends RykNetServer {
 
     @Override
     protected void OnClientConnected(Socket clientSocket) {
-        SendPacket(clientSocket, new PacketSendMessage("I do love jazz"));
+        SendPacket(clientSocket, new PacketMessage("I do love jazz"));
     }
 
     @Override
