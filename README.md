@@ -125,7 +125,7 @@ public class PacketSendMessage extends RykNetPacket {
 
     @Override
     public String PacketID() { 
-        return "message"; 
+        return "send_message_id"; 
     }
 
     @Override
