@@ -1,8 +1,5 @@
 package RykNet;
 
-import RykNet.RykNet;
-import RykNet.RykNetPacket;
-
 import java.net.Socket;
 
 public class PacketPongServer extends RykNetPacket {

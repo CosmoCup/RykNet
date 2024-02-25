@@ -41,7 +41,7 @@ public class IncomingPacketHandler extends Thread {
                         String packetID = packetSectors[0];
                         String packetData = packetSectors[1];
 
-                        RykNetPacket packet = PacketManager.GetPacketFromID(packetID);
+                        RykNetPacket packet = RykNetPacketManager.GetPacketFromID(packetID);
                         if (packet == null) {
                             RykNet.Print("Received invalid packet from " + socket.getRemoteSocketAddress() );
                             RykNet.Print( "Have you registered the packet? -> RegisterPacket( new <YourPacketHere>() )" );

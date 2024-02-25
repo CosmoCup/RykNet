@@ -14,8 +14,8 @@ public abstract class RykNetServer {
 
     public RykNetServer(int port) {
         this.port = port;
-        PacketManager.InitStdPackets(this, null);
-        RykNet.Print(" ");
+        RykNetPacketManager.InitStdPackets(this, null);
+        RykNet.Print("Init");
         try {
             serverSocket = new ServerSocket(port);
             connectionHandler = new ServerConnectionHandler(this);
@@ -57,7 +57,7 @@ public abstract class RykNetServer {
             DataOutputStream outputStream = new DataOutputStream(clientSocket.getOutputStream());
             outputStream.writeUTF(packetData);
         }
-        catch(SocketException e) { ClientDisconnected(clientSocket, RykNet.DisconnectReason.TIMEOUT); }
+        catch(NullPointerException e) { ClientDisconnected(clientSocket, RykNet.DisconnectReason.TIMEOUT); }
         catch(Exception e) {  e.printStackTrace();  }
     }
 
@@ -91,7 +91,7 @@ public abstract class RykNetServer {
     }
 
     void ReceivePing(Socket socket, long timestamp) {
-        SendPacket(socket, new PacketPongClient(timestamp));
+        SendPacket(socket, new PacketPongClient(null, timestamp));
     }
 
 

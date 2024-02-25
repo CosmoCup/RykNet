@@ -2,7 +2,7 @@ package RykNet;
 
 import java.util.HashMap;
 
-public class PacketManager {
+public class RykNetPacketManager {
 
     public static HashMap<String, RykNetPacket> Packets = new HashMap<>();
 
@@ -11,11 +11,7 @@ public class PacketManager {
     }
 
     public static RykNetPacket GetPacketFromID(String packetID) {
-        if (Packets.containsKey( packetID )) {
-            return Packets.get( packetID );
-        } else {
-            return null;
-        }
+        return Packets.getOrDefault(packetID, null);
     }
 
     public static void InitStdPackets(RykNetServer rykNetServer, RykNetClient rykNetClient) {
@@ -24,7 +20,7 @@ public class PacketManager {
         RegisterPacket(new PacketPingServer(rykNetServer));
         RegisterPacket(new PacketPongServer(0));
         RegisterPacket(new PacketPingClient(rykNetClient));
-        RegisterPacket(new PacketPongClient(0));
+        RegisterPacket(new PacketPongClient(rykNetClient, 0));
 
         RegisterPacket(new PacketDisconnectClient(rykNetClient));
         RegisterPacket(new PacketClientDisconnect(rykNetServer, null));

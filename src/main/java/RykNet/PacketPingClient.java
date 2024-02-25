@@ -1,8 +1,5 @@
 package RykNet;
 
-import RykNet.RykNetClient;
-import RykNet.RykNetPacket;
-
 import java.net.Socket;
 
 public class PacketPingClient extends RykNetPacket {

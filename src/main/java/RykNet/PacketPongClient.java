@@ -1,13 +1,14 @@
 package RykNet;
 
-import RykNet.*;
 import java.net.Socket;
 
 public class PacketPongClient extends RykNetPacket {
 
+    RykNetClient rykNetClient;
     long timestamp;
 
-    public PacketPongClient(long timestamp) {
+    public PacketPongClient(RykNetClient rykNetClient, long timestamp) {
+        this.rykNetClient = rykNetClient;
         this.timestamp = timestamp;
     }
 
@@ -27,7 +28,7 @@ public class PacketPongClient extends RykNetPacket {
     @Override
     public void HandlePacket(Socket socket) {
         long timeElipsed = System.currentTimeMillis() - timestamp;
-        RykNet.Print("Ping took " + timeElipsed + "ms");
+        rykNetClient.ReceivePong((int) timeElipsed);
     }
 
 
