@@ -3,7 +3,7 @@
 
 A simple and versatile multi-purpose Java-based networking protocol interface
 
-# Dependancy
+# Dependency
 
 < Maven repo coming soon :^) >
 
